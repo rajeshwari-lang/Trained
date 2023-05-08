@@ -1,9 +1,11 @@
 import React from 'react'
 import BrowsePage from '../browse_page';
 import CategoryList from './category';
+import VideoList from './videos';
 
 export default function Header() {
     return (
+      
         <header className="relative">
       <div className="bg-bright-white pt-6">
         <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
@@ -40,11 +42,10 @@ export default function Header() {
             </div>
             <div>
             <div className="hidden space-x-8 md:flex md:ml-10">
-                       {/* <a href="/Category" className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300">Categories<svg className="mt-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="false">   */}
 
-               <CategoryList/>   
-               {/* </svg>  */}
-               {/* </a>   */}
+                       <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300">categories</a>    
+
+{/* <CategoryList/>                 */}
              
               <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
             </div>
@@ -95,7 +96,7 @@ export default function Header() {
 
             <div className="px-2 space-y-1" role="menu">
 
-            <CategoryList/> 
+           <CategoryList/>  
             </div>
             <div role="none" className="mt-6 px-5">
               <a href="/category" className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700">Start free trial</a>
