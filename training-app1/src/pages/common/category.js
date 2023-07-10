@@ -126,127 +126,53 @@ export default CategoryList;
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Card } from 'antd';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-const gridStyle = {
-  width: '25%',
-  textAlign: 'center',
-};
+
 
 function CategoryList() {
-    const [categories, setCategories] = useState([]);
-    useEffect(() => {
-        async function fetchCategories() {
-            const response = await axios.get('http://localhost:5000/categories');
-            setCategories(response.data);
-        }
-        fetchCategories();
-    }, []);
-    
-    return (
-        <div class="container">
-            <Row xs={2} md={3} className="g-6"></Row>
-           <Card title="Card Title">
-   {/* <Card.Grid style={gridStyle}>Categories</Card.Grid>  */}
-   {/*  <Card.Grid hoverable={false} style={gridStyle}>
-      categories
-    </Card.Grid>  */} 
- {/*    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-     */}
-             {/* <ul> */}
-
-            {categories.map(category => (
-                <li key={category._id}>
-                    <Link to={`/categories/${category._id}/subcategories`}>
-                    <Card.Grid hoverable={false} style={gridStyle}>
-   {category.name}</Card.Grid>
-                    </Link>
-                </li>
-            ))}
-        {/* </ul>  */}
-        </Card>
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <div class="col">
-    <Card title="Card Title">
-   <Card.Grid style={gridStyle}>Categories</Card.Grid> 
-   {/*  <Card.Grid hoverable={false} style={gridStyle}>
-      categories
-    </Card.Grid>  */} 
- {/*    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-    <Card.Grid style={gridStyle}>Content</Card.Grid>
-     */}
-             {/* <ul> */}
-
-            {categories.map(category => (
-                <li key={category._id}>
-                    <Link to={`/categories/${category._id}/subcategories`}>
-                    <Card.Grid hoverable={false} style={gridStyle}>
-   {category.name}</Card.Grid>
-                    </Link>
-                </li>
-            ))}
-        {/* </ul>  */}
-        </Card>
-    </div>
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await axios.get('http://localhost:5000/categories');
+      setCategories(response.data);
+    }
+    fetchCategories();
+  }, []);
+  
+  return (
+    <Row xs={1} md={3} className="g-4">
+      {
+        categories.map(category => (
+          <Col>
+     <a class="thumbnail" href=""> 
+            <Card>
+              <Card.Img variant="top" style={{ height: '100px' }}
+              
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj2jma2z7jmk1gd8J1Ty4W29QlPs_lc8w1aA&usqp=CAU" />
+              {/* <Card.Header>categories</Card.Header> */}
 
 
+              <Card.Body style={{ height: '100px' }}>
 
-            {/* <select >
-           
+                <Card.Text>
+                  
 
-                {categories
+                  <Link to={`/categories/${category._id}/subcategories`}> 
 
-
-                    ? categories.map((category) => {
-                        return <option key={category._id}>
-                            <Link to={`/categories/${category._id}/subcategories`}>
-                                {category.name}
-
-                            </Link>
-                        </option>;
-                    })
-                    
-                    : null}
-                <option value="default">Categories</option>
-
-            </select> 
- */}
-           {/*  <Card
-    style={{
-      width: 300,
-    }}
-  >
-   {categories
+                    {category.name}      
+</Link>
+                </Card.Text>
 
 
-? categories.map((category) => {
-    return <option key={category._id}>
-        <Link to={`/categories/${category._id}/subcategories`}>
+              </Card.Body>
+            </Card>
+            </a>
+          </Col>
+        ))}
+    </Row>
 
-         {category.name} 
-
-        </Link>
-        
-    </option>;
-
-})
-
-: null}
-  <option value="default">Categories</option>  
- </Card>
-
- */}
- </div>
-        </div>
-
-    );
+  );
 }
 export default CategoryList;

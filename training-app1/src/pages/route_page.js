@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './common/header';
 import Footer from './common/footer';
 import AboutPage from './about_page';
+import Form from '../Form';
 
 
 import {
@@ -23,6 +24,11 @@ import AddCategory from './common/addcat';
 // import Addvideo from './common/addvideo';
 
 export default function RoutePage() {
+
+  const getdata=(name)=>{
+    console.log("from route",name)
+
+  }
     return (
       <Router>
 
@@ -61,12 +67,14 @@ export default function RoutePage() {
 
 
 
-                     
+
+
                 
                 
                 </Routes>   
 
-                
+                <Form onSubmit={getdata} name="raji"/>
+
           <Footer/>
             
           </div>
