@@ -11,11 +11,11 @@ export default function HomePage() {
     return (
         <section>
             <HeroSection/>
-            <TechnologySearchListSection/>
+            {/* <TechnologySearchListSection/> */}
             <MyTopCatagoriesListSection/>
-            <CaseStudySection/>
-            <TrendingTopicsSection/>
-            <PartnersSection/>
+            {/* <CaseStudySection/> */}
+            {/* <TrendingTopicsSection/> */}
+            {/* <PartnersSection/> */}
 
         </section>
     )

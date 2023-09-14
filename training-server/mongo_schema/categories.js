@@ -5,6 +5,12 @@ const categorySchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    imageUrl: { 
+        type: String,
+        required: true
+
+    },
+
     subcategories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subcategory'

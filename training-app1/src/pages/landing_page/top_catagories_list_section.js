@@ -184,7 +184,7 @@ export default function TopCatagoriesListSection(props){
                   </p>
                   <a href="/" className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
-                      Cloud Computing - Beginners & Experts
+                      Programming - Beginners & Experts
                     </p>
                     <p className="mt-3 text-base text-gray-500">
                     Cloud computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. 

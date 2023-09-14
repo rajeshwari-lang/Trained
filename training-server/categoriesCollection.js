@@ -77,6 +77,7 @@ router.post('/categories', async (req, res) => {
         const { name, subcategories } = req.body;
         const category = new Category({
             name,
+            imageUrl,
             subcategories: [],
         });
         await category.save();

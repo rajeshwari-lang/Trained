@@ -3,6 +3,8 @@ import { useState } from 'react';
 import axios from 'axios';
 const AddCategory = () => {
     const [categoryName, setCategoryName] = useState('');
+    const [imageUrl, setImageUrl] = useState([]);
+
     const [subcategoryName, setSubcategoryName] = useState([]);
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState([]);
@@ -33,6 +35,7 @@ const AddCategory = () => {
             // Add the new category and subcategory
             const categoryResponse = await axios.post('http://localhost:5000/categories', {
                 name: categoryName,
+                img:imageUrl,
                 subcategories: subcategoryName.filter(Boolean),           
              });
             const subcategoryId = categoryResponse.data.subcategories[0]._id;
@@ -43,6 +46,7 @@ const AddCategory = () => {
             });
             console.log(videoResponse.data);
             setCategoryName('');
+            setImageUrl([]);
             setSubcategoryName([]);
             setTitle('');
             setUrl([]);
@@ -50,6 +54,7 @@ const AddCategory = () => {
             console.error(error);
         }
     };
+    
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -62,12 +67,23 @@ const AddCategory = () => {
                     required
                 />
             </div>
+            <div>
+                <label htmlFor="category-imageUrl">ImageUrl:</label>
+                <input
+                    type="text"
+                    id="category-imageUrl"
+                    value={imageUrl}
+                    onChange={(event) => setImageUrl(event.target.value)}
+                    required
+                />
+            </div>
             {subcategoryName.map((subcategoryName, index) => (
                 <div key={index}>
                     <label htmlFor={`subcategory-name-${index}`}>Subcategory name:</label>
                     <input
                         type="text"
                         id={`subcategory-name-${index}`}
+                        
                         value={subcategoryName}
                         onChange={(event) => handleSubcategoryNameChange(index, event.target.value)}
                     />
@@ -104,5 +120,5 @@ const AddCategory = () => {
             <button type="submit">Add</button>
         </form>
     );
-};
+};  
 export default AddCategory;

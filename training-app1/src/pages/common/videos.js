@@ -17,9 +17,9 @@ import axios from 'axios';
         fetchVideos();
     }, [categoryId, subcategoryId]);
     return (
-        <div className='added'>
+       <div className='added'>
           
-            <h1>DigitalMarketing</h1>
+            {/* <h1>DigitalMarketing</h1>
             <ul>
                 {videos.map(video => (
                     <li key={video._id}>
@@ -29,8 +29,62 @@ import axios from 'axios';
                          {video.title} 
                     </li>
                 ))}
-            </ul>
+            </ul>  */}
+            <div className="flex items-center justify-between p-8">
+      <div className="w-1/2 pr-8">
+        {/* Author details */}
+        <h2 className="text-2xl font-semibold mb-2">Author Name:mark Zuck
+</h2>
+        <p className="text-gray-600">Bio and author description goes here.</p>
+        <time dateTime="2023-03-16">
+                      Mar 16, 2023
+                    </time>
+                    <span aria-hidden="true">
+                      &middot;
+                    </span>
+                    <span>
+                      10 hours 
+                    </span>
+      </div>
+      <div className="w-1/2">
+        {/* Course image */}
+        <ul>
+                {videos.map(video => (
+                    <li key={video._id}>
+                        <ReactPlayer ref={playerRef} url={video.url} controls={true} height={250} width={350} />
+
+                        
+                         {video.title} 
+                    </li>
+                ))}
+            </ul>      </div>
+    </div>
+    <div className="flex p-4 border rounded-lg shadow-md">
+      {/* Image */}
+      <div className="w-1/2 pr-4">
+        {/* <img alt={video.title} className="h-auto w-full" /> */}
+      </div>
+      {/* Author Details */}
+      <div className="w-1/2">
+        <h2 className="text-xl font-semibold">DigitalMarketing</h2>
+        <p className="text-gray-600">mark Zuck</p>
+        <div className="flex items-center mt-2">
+          {/* Star Rating */}
+          <div className="flex">
+            <span className="text-yellow-500">&#9733;</span>
+            <span className="text-yellow-500">&#9733;</span>
+            <span className="text-yellow-500">&#9733;</span>
+            <span className="text-yellow-500">&#9733;</span>
+            <span className="text-yellow-500">&#9734;</span>
+          </div>
+          <span className="text-gray-600 ml-2">(4 Reviews)</span>
         </div>
+      </div>
+    </div>
+            
+                </div>
+            
+      
     );
 } 
 export default VideoList; 

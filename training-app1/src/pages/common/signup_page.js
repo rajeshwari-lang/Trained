@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React from 'react'
 function SignUpPage() {
   const handleSubmit=(e)=>{
     e.preventDefault();
@@ -7,6 +7,8 @@ function SignUpPage() {
     const email=e.target.email.value;
     const password=e.target.password.value;
     console.log(fname,"\n",lname,"\n",email,"\n",password);
+  
+
     fetch("http://localhost:5000/register",{
     method:"POST",
     crossDomain:true,
@@ -69,7 +71,9 @@ function SignUpPage() {
                 </div>
               </div>
                 <div>
-<form className="space-y-6" onSubmit={handleSubmit}>
+<form className="space-y-6" onSubmit={handleSubmit} action="/login" >
+{/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
+
 <div className="mt-6">
   <div className="space-y-1">
                     <label htmlFor="fname" className="block text-sm font-medium text-gray-700">
@@ -121,7 +125,7 @@ function SignUpPage() {
                     </div>
                     </div>
  <div>
-                    <button type="Submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <button type='Submit' className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Sign up
                     </button>
                   </div>
@@ -129,7 +133,11 @@ function SignUpPage() {
  </form>
     </div>
     </div>
-    </div></div>
+    </div>
+    </div>
+    <div className="hidden lg:block relative w-0 flex-1">
+          <img className="absolute inset-0 h-full w-full object-cover" src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?size=626&ext=jpg" alt="" />
+        </div>
     </div>
   );
 }
